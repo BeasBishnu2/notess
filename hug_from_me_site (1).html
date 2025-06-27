@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Hug from me</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('pinkver.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #b3004b;
+      overflow-x: hidden;
+      position: relative;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: white;
+    }
+    #message-box {
+      background: rgba(255, 240, 245, 0.9);
+      border: 3px dashed #ff6699;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      font-size: 1.3rem;
+    }
+    button {
+      background-color: #ff6699;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Playfair Display', serif;
+    }
+    button:hover {
+      background-color: #e05585;
+    }
+    .emoji-float {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 12s infinite ease-in-out;
+      opacity: 0.6;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
+    .cursor-heart {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: #ffcce0;
+      transform: rotate(45deg);
+      border-radius: 50% 50% 0 0;
+      pointer-events: none;
+      box-shadow: 0 0 3px #ffcce0, 0 0 6px #ffcce0;
+      animation: fadeOut 1s forwards;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+    .footer-message {
+      margin-top: 4rem;
+      font-size: 1rem;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>25 Hugs for Jas</h1>
+  <div id="message-box">Click the button below, Jasjyot 💖</div>
+  <button onclick="showMessage()">Click Here 😋💌</button>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_a67c7d47db.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="footer-message">I love you, ~Beas</div>
+
+  <script>
+    const messages = [
+      "I love you so much, you're doing so well 💖",
+      "I haven't met a more capable and deserving person ever 💪",
+      "I'm sorry you feel this shitty, this will pass soon. I'm sorry it sucks so bad right now 💗",
+      "Every time you talk about your interests, I can see the light in your eyes, I dont think you see how cool you are",
+      "You're the funniest person I've ever met and I've met a lot of people",
+      "You will do so much better than you think, I know it",
+      "I know the whole uncertainty about everything is very anxiety inducing, but I know you'll tackle this process, actually, you'll ANNIHILATE it ",
+      "Which company wouldn't want you? Have you seen yourself?",
+      "I hope it gets better everyday and you feel better soon💕",
+      "I wish I could hug and kiss you to sleep every night, ilysm",
+      "Everything is going to work out perfectly, and exactly how you want it to",
+      "You work so hard, everyone around you can see it, you are so deserving",
+      "Also, again, before you say anything, this didn't take me long, so stfu",
+      "You are such a hardworking person, everything about you is so admirable, you are going to get everything you've ever wanted and more",
+      "You're so so so SO going to ace everything, I know it for a fact💪",
+      "You genuinely light up the atmosphere when you talk about your passions, it's actually so incredibly beautiful and awe inspiring",
+      "I have so much faith in you, you can't even begin to imagine",
+      "I'm always here to listen, however big or small, sending you innumerous virtual hugs and face kisses, if you feel a tingle, that's me, ya",
+      "It's going to suck, I know, and I's sorry, but I'm hoping it won't be for long❤️",
+      "You've come so far already, it'll only get better now onwards, it'll only go uphill",
+      "Please don't be so hard on yourself to the point of getting sick, take care baby, ily<3",
+      "Your jokes make me laugh every single day, I still don'y know how you come up with the wittiest lines ever",
+      "Ily my genius multitalented, guitar god, extremely funny and smart, (not to mention HAWT) bf, pulling you is a flex💪",
+      "You're the smartest person I know, I know you keep saying your friends are better, which is so heartbreaking because you need to look back and see yourself once",
+      "Please take care of your health, take breaks, drink water, and sleep well💗",
+      "I love you so much, my baby. You're the bestest boyfriend and the most caring person I've ever had the pleasure of knowing and loving💕"
+    ];
+
+    function showMessage() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      document.getElementById('message-box').innerHTML = messages[randomIndex];
+    }
+
+    // Floating emojis
+    const emojis = ['🎸', '💗', '❤️','✨','🎵'];
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.className = 'emoji-float';
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * 100 + 'vh';
+      el.style.animationDuration = (8 + Math.random() * 10) + 's';
+      document.body.appendChild(el);
+    }
+
+    // Trailing glowing hearts
+    document.addEventListener('mousemove', e => {
+      const heart = document.createElement('div');
+      heart.className = 'cursor-heart';
+      heart.style.left = e.pageX + 'px';
+      heart.style.top = e.pageY + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1000);
+    });
+  </script>
+</body>
+</html>
